@@ -9,8 +9,6 @@ phases:
     runtime-versions:
       python: 3.7
     commands:
-      # Install pip
-      - yum install python-pip
       # Upgrade AWS CLI to the latest version
       - pip install --upgrade awscli
       # Download dependencies
