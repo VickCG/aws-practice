@@ -9,11 +9,15 @@ phases:
     runtime-versions:
       python: 3.7
     commands:
-      - pip install
-  build:
-    commands:
+      # Install pip
+      - sudo apt-get install python-pip
+      # Upgrade AWS CLI to the latest version
+      - pip install --upgrade awscli
+      # Download dependencies
       - echo "[+] Installing dependencies...."
       - pip install -r requirements.txt
+  build:
+    commands:
       - echo "Starting SAM packaging `date` in `pwd`"
       - aws cloudformation package --template-file template.yaml --s3-bucket genx-test-lambda --output-template-file packaged.yaml
   post_build:
