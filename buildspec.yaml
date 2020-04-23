@@ -1,0 +1,29 @@
+version: 0.2
+
+proxy:
+    upload-artifacts: yes
+    logs: yes
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.7
+    commands:
+      - pip install
+  build:
+    commands:
+      - echo "[+] Installing dependencies...."
+      - pip install -r requirements.txt
+      - echo "Starting SAM packaging `date` in `pwd`"
+      - aws cloudformation package --template-file template.yaml --s3-bucket genx-test-lambda --output-template-file packaged.yaml
+  post_build:
+    commands:
+      - echo "SAM packaging completed on `date`"
+artifacts:
+  files:
+    - packaged.yaml
+  discard-paths: yes
+  base-directory: location
+cache:
+  paths:
+    - '/root/.cache/pip'
