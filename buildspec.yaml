@@ -11,9 +11,6 @@ phases:
     commands:
       # Upgrade AWS CLI to the latest version
       - pip install --upgrade awscli
-      # Download dependencies
-      - echo "[+] Installing dependencies...."
-      - pip install -r requirements.txt
   build:
     commands:
       - echo "Starting SAM packaging `date` in `pwd`"
