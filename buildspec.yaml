@@ -13,16 +13,15 @@ phases:
       - pip install --upgrade awscli
   build:
     commands:
-      - echo "Starting SAM packaging `date` in `pwd`"
+      - echo "Starting SAM packaging"
       - aws cloudformation package --template-file template.yaml --s3-bucket genx-test-lambda --output-template-file packaged.yaml
   post_build:
     commands:
-      - echo "SAM packaging completed on `date`"
+      - echo "SAM packaging completed"
 artifacts:
   files:
     - packaged.yaml
   discard-paths: yes
-  base-directory: location
 cache:
   paths:
     - '/root/.cache/pip'
