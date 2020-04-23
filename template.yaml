@@ -6,7 +6,7 @@ Resources:
     Properties:
       Handler: lambda_test/lambda_function.handler
       Runtime: python3.7
-      CodeUri: test/
+      CodeUri: ./
       Environment:
         Variables:
           STATUS: Test
