@@ -1,0 +1,11 @@
+AWSTemplateFormatVersion : '2010-09-09'
+Transform: AWS::Serverless-2016-10-31
+Resources:
+  GetStatus:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_test/lambda_function.handler
+      Runtime: python3.7
+      Environment:
+        Variables:
+          STATUS: Test
