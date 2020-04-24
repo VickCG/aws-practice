@@ -24,7 +24,8 @@ sam package --template-file template.yaml \
 --output-template-file package.yaml \
 --s3-bucket {Bucketname}
 ```
-
+After building successfully, the `package.yaml` file is generated automatically. This file is used for deploying lambda
+ function to aws
 - Deploy:
 ```
 sam deploy --template-file package.yml \
@@ -32,7 +33,7 @@ sam deploy --template-file package.yml \
 --capabilities CAPABILITY_IAM
 ```
 
-You also run the `build_and_deploy.sh` bash file to deploy. It's summary of the above steps.
+You also might create and run the `build_and_deploy.sh` bash file to deploy. It's summary of the above steps.
 
 #### Testing locally
  
