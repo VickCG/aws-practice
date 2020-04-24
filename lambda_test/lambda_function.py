@@ -1,7 +1,8 @@
 import os
 
+
 def handler(event, context):
     status = os.environ['STATUS']
     print(status)
-    print('Test aws code pipeline11')
+    print('Test aws code pipeline12')
 
