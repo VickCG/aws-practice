@@ -67,7 +67,7 @@ Resources:
               },
               "Test2": {
                 "Type": "Task",
-                "Resource": "${Test2}",
+                "Resource": "${Test2Arn}",
                 "End": true
               }
             }
