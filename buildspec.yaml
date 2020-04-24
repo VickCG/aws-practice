@@ -19,8 +19,8 @@ phases:
     commands:
       - echo "SAM packaging completed"
 
-#artifacts:
-#  type: zip
-#  files:
-#    - template.yaml
-#    - packaged.yaml
+artifacts:
+  type: zip
+  files:
+    - template.yaml
+    - packaged.yaml
