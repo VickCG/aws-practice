@@ -10,3 +10,9 @@ Resources:
       Environment:
         Variables:
           STATUS: Test
+  Test2:
+    Type: AWS::Serverless::Function
+    Properties:
+      Handler: lambda_test2/lambda_function.handler
+      Runtime: python3.7
+      Policies: AWSLambdaFullAccess
