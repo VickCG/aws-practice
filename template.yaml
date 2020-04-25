@@ -58,7 +58,7 @@ Resources:
         - |-
           {
             "Comment": "A Hello World example using an AWS Lambda function",
-            "StartAt": "HelloWorld",
+            "StartAt": "GetStatus",
             "States": {
               "GetStatus": {
                 "Type": "Task",
