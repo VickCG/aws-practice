@@ -3,7 +3,7 @@ Description: "An example template with an IAM role for a Lambda state machine."
 Transform: AWS::Serverless-2016-10-31
 Resources:
   LambdaExecutionRole:
-    Type: "AWS::IAM::Role"
+    Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
@@ -32,7 +32,7 @@ Resources:
       FunctionName: !Sub "Test2-${FunctionNameSuffix}"
       Role: !GetAtt [ LambdaExecutionRole, Arn ]
   StatesExecutionRole:
-    Type: "AWS::IAM::Role"
+    Type: AWS::IAM::Role
     Properties:
       AssumeRolePolicyDocument:
         Version: "2012-10-17"
@@ -53,11 +53,10 @@ Resources:
                   - "lambda:InvokeFunction"
                 Resource: "*"
   MyStateMachine:
-    Type: "AWS::StepFunctions::StateMachine"
+    Type: AWS::StepFunctions::StateMachine
     Properties:
-      DefinitionString:
-        !Sub
-        - |-
+      DefinitionString: !Sub
+        |-
           {
             "Comment": "A Hello World example using an AWS Lambda function",
             "StartAt": "GetStatus",
