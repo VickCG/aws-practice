@@ -18,6 +18,7 @@ Resources:
       Handler: lambda_test/lambda_function.handler
       Runtime: python3.7
       Policies: AWSLambdaFullAccess
+      FunctionName: !Sub "GetStatus-${FunctionNameSuffix}"
       Role: !GetAtt [ LambdaExecutionRole, Arn ]
       Environment:
         Variables:
@@ -28,6 +29,7 @@ Resources:
       Handler: lambda_test2/lambda_function.handler
       Runtime: python3.7
       Policies: AWSLambdaFullAccess
+      FunctionName: !Sub "Test2-${FunctionNameSuffix}"
       Role: !GetAtt [ LambdaExecutionRole, Arn ]
   StatesExecutionRole:
     Type: "AWS::IAM::Role"
@@ -62,16 +64,14 @@ Resources:
             "States": {
               "GetStatus": {
                 "Type": "Task",
-                "Resource": "${getStatusArn}",
+                "Resource": "${GetStatus.Arn}",
                 "Next": "Test2"
               },
               "Test2": {
                 "Type": "Task",
-                "Resource": "${Test2Arn}",
+                "Resource": "${Test2.Arn}",
                 "End": true
               }
             }
           }
-        - {getStatusArn: !GetAtt [ GetStatus, Arn ]}
-        - {Test2Arn: !GetAtt [ Test2, Arn ]}
       RoleArn: !GetAtt [ StatesExecutionRole, Arn ]
